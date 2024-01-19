@@ -16,7 +16,7 @@ list(APPEND LINK_OPTIONS
 string(REPLACE ";" "," LINK_OPTIONS "${LINK_OPTIONS}")
 
 # Add kernel target
-add_executable(${PROJECT_NAME} ${SRCS} ${HDRS})
+add_executable(${PROJECT_NAME} EXCLUDE_FROM_ALL ${SRCS} ${HDRS})
 target_include_directories(${PROJECT_NAME} PRIVATE "include")
 
 # Configure linking
