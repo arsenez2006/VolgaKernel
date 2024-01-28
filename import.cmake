@@ -12,6 +12,7 @@ function(import_VolgaKernel)
         BINARY_DIR ${ARG_PATH}/build
         EXCLUDE_FROM_ALL TRUE
         STEP_TARGETS build
+        BUILD_ALWAYS TRUE
 
         CMAKE_CACHE_ARGS
         "-DOUTPUT:PATH=${ARG_OUTPUT}"
