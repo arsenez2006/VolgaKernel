@@ -24,7 +24,7 @@ target_link_options(${PROJECT_NAME} PRIVATE "-Wl,${LINK_OPTIONS}")
 target_link_libraries(${PROJECT_NAME} libk)
 
 add_custom_target(${PROJECT_NAME}_copy
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PROJECT_NAME}> ${OUTPUT}
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PROJECT_NAME}> ${OUTPUT}/$<TARGET_FILE_NAME:${PROJECT_NAME}>
     DEPENDS ${PROJECT_NAME}
 )
 
