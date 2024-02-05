@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include(cmake/toolchain.cmake)
 project(VolgaKernel)
 
@@ -8,6 +9,5 @@ add_subdirectory(libk)
 add_subdirectory(kernel)
 
 add_custom_target(${PROJECT_NAME} ALL
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:kernel> ${OUTPUT}/kernel.pe
     DEPENDS ${KERNEL_DEPS}
 )

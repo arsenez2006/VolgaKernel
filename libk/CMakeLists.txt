@@ -11,6 +11,7 @@ set(SYM_MAP "${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map")
 # Link Options
 list(APPEND LINK_OPTIONS
     "/map:${SYM_MAP}"
+    "/noentry"
 )
 string(REPLACE ";" "," LINK_OPTIONS "${LINK_OPTIONS}")
 
@@ -19,7 +20,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC "include")
 
 # Configure linking
 target_link_options(${PROJECT_NAME} PRIVATE "-Wl,${LINK_OPTIONS}")
+set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE FALSE)
+
+add_custom_target(${PROJECT_NAME}_copy
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PROJECT_NAME}> ${OUTPUT}
+    DEPENDS ${PROJECT_NAME}
+)
 
 # Update dependencies
-list(APPEND KERNEL_DEPS ${PROJECT_NAME})
+list(APPEND KERNEL_DEPS ${PROJECT_NAME}_copy)
 set(KERNEL_DEPS ${KERNEL_DEPS} PARENT_SCOPE)
