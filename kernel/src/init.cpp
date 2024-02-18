@@ -1,9 +1,11 @@
 #include <bootinfo.hpp>
 #include <common/attributes.hpp>
 #include <debug/serial.hpp>
-#include <vlg/printf.hpp>
+#include <sysinit.hpp>
 
-extern "C" void __noreturn _init(void* test) {
-  debug::serial_printf("test %d\n", 228);
+extern "C" void __noreturn _init(void* bootinfo) {
+  init_info initinfo;
+  sysinit(bootinfo, &initinfo);
+
   while (true) { __asm__ volatile("hlt"); }
 }

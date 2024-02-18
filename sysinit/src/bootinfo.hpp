@@ -55,7 +55,7 @@ typedef struct __packed boot_info_t {
    * @brief Video info
    *
    */
-  struct {
+  struct __packed {
     /**
      * @brief Driver type
      *

@@ -6,6 +6,7 @@ project(VolgaKernel)
 include(cmake/options.cmake)
 
 add_subdirectory(libk)
+add_subdirectory(sysinit)
 add_subdirectory(kernel)
 
 add_custom_target(${PROJECT_NAME} ALL
